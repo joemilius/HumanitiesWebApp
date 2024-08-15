@@ -1,7 +1,8 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
+import { StateContext } from '../context'
 
 function Login(){
-    const [currentUser, setCurrentUser] = useState({})
+    const {currentUser, setCurrentUser} = React.useContext(StateContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -12,6 +13,8 @@ function Login(){
             setPassword(e.currentTarget.value)
         }
     }
+    console.log(username)
+    console.log(password)
 
     function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>){
         e.preventDefault()
