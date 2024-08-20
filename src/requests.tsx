@@ -59,4 +59,22 @@ const patchRequest = async (url:string, body:object) => {
 
 }
 
-export {getRequest, postRequest, patchRequest}
+const deleteRequest = async (url:string) => {
+    try{
+        const configObj = {
+            method: "DELETE"
+        }
+        const res = await fetch(url, configObj)
+
+        const data = await res.json()
+
+        if(!res.ok){
+            throw new Error(data.error)
+        }
+        return data
+    }catch(error){
+        return error
+    }
+}
+
+export {getRequest, postRequest, patchRequest, deleteRequest}
