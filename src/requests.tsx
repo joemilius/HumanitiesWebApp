@@ -1,15 +1,17 @@
+
 const getRequest = async (url: string) => {
     try{
         const res = await fetch(url)
         const data = await res.json()
         
         if(!res.ok){
-            throw new Error(data.error)
+            throw new Error(data)
         }
 
         return data
     } catch (error){
-        return error
+        console.log(error)
+        return false
     }
 }
 
