@@ -11,11 +11,14 @@ export interface IUser {
 }
 
 const useValue = () => {
-    const[currentUser, setCurrentUser] = useState<IUser>()
+    const [currentUser, setCurrentUser] = useState<IUser>()
+    const [errors, setErrors] = useState(false)
 
     return{
         currentUser,
-        setCurrentUser
+        setCurrentUser,
+        errors,
+        setErrors
     }
 }
 
