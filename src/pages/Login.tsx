@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { StateContext } from '../context'
 import { postRequest } from '../requests'
 import NavBar from '../components/NavBar'
@@ -46,6 +46,9 @@ function Login(){
                 <button type='submit'>Login</button>
                 {errors ? <p>Username or Pasword are incorrect</p> : null}
             </form>
+            <p>Not a member? You can 
+                <NavLink to='/signup'>Signup</NavLink>
+                here.</p>
         </>
     )
 }
