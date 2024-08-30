@@ -29,7 +29,7 @@ function Login(){
             }else{
                 setCurrentUser(data)
                 setErrors(false)
-                navigate('/')
+                navigate('/home')
             }
             
         })

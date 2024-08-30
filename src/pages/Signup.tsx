@@ -1,17 +1,21 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext} from 'react'
 import { StateContext } from '../context'
 import * as yup from 'yup'
 import {useFormik} from 'formik'
+import { postRequest } from '../requests'
+import { useNavigate } from 'react-router-dom'
 
 
 function Signup(){
-    const {currentUser, setCurrentUser} = useContext(StateContext)
-    const [signupData, setSignupData] = useState({
-        username: '',
-        email: '',
-        first_name: '',
-        last_name: ''
-    })
+    const {setCurrentUser} = useContext(StateContext)
+    const [errors, setErrors] = useState(false)
+    const navigate = useNavigate()
+    // const [signupData, setSignupData] = useState({
+    //     username: '',
+    //     email: '',
+    //     first_name: '',
+    //     last_name: ''
+    // })
     const signupConfig = {
         initialValue: {
         username: '',
@@ -62,24 +66,41 @@ function Signup(){
         initialValues: signupConfig.initialValue,
         validationSchema: signupConfig.formSchema,
         onSubmit: (values, {resetForm}) => {
-            
+            handleSubmit(values)
+            resetForm()
         }
     })
-    function handleSignupChange(e: React.SyntheticEvent<HTMLInputElement>){
-        setSignupData({
-            ...signupData, [e.currentTarget.name]: e.currentTarget.value
+    // function handleSignupChange(e: React.SyntheticEvent<HTMLInputElement>){
+    //     setSignupData({
+    //         ...signupData, [e.currentTarget.name]: e.currentTarget.value
+    //     })
+    // }
+    function handleSubmit(values: object){
+        console.log("submitted")
+        console.log(values)
+        postRequest('api/signup', values)
+        .then(data => { 
+            if(data instanceof Error){
+                console.log(data.message)
+                setErrors(true)
+            }else{
+                setCurrentUser(data)
+                setErrors(false)
+                navigate('/home')
+            }
         })
     }
 
-
     return(
         <>
-        <form>
-            <input type='text' name='first_name' onChange={handleSignupChange} placeholder='Enter first name here'></input>
-            <input type='text' name='last_name' onChange={handleSignupChange} placeholder='Enter last name here'></input>
-            <input type='text' name='email' onChange={handleSignupChange} placeholder='Enter email here'></input>
-            <input type='text' name='username' onChange={handleSignupChange} placeholder='Enter username here'></input>
+        <form onSubmit={formik.handleSubmit}>
+            <input type='text' name='first_name' onChange={formik.handleChange} placeholder='Enter first name here'></input>
+            <input type='text' name='last_name' onChange={formik.handleChange} placeholder='Enter last name here'></input>
+            <input type='text' name='email' onChange={formik.handleChange} placeholder='Enter email here'></input>
+            <input type='text' name='username' onChange={formik.handleChange} placeholder='Enter username here'></input>
+            <input type='password' name='password' onChange={formik.handleChange} placeholder='Enter password here'></input>
             <input type='submit'></input>
+            {errors ? <p>The information provided was inocrrect</p>: null}
         </form>
         </>
     )
