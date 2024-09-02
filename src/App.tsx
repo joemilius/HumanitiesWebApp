@@ -3,6 +3,7 @@ import { StateContext } from './context'
 import { getRequest } from './requests'
 import NavBar from './components/NavBar'
 import './App.css'
+import Login from './pages/Login'
 
 function App() {
 
@@ -28,7 +29,10 @@ function App() {
         <NavBar />
       </header>
       {errors ?
+      <>
       <p>Please Sign In</p>
+      <Login />
+      </>
     :
     <p>Welcome {currentUser?.first_name}</p>}
     </>

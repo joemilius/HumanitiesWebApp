@@ -6,18 +6,32 @@ import NavBar from '../components/NavBar'
 function Home(){
   const {currentUser} = useContext(StateContext)
 
-
+    const myMovies = currentUser?.movies
 
     return(
         <>
             <header>
                 <NavBar />
             </header>
-            {currentUser === undefined ?
-            <h3>Please Sign In</h3>
-            :
-            <p>Welcome {currentUser?.first_name}</p>
-            }
+            <h3>
+                Movies to Watch
+            </h3>
+            <ul>
+                {/* map movies here */}
+                {myMovies}
+            </ul>
+            <h3>
+                Music to Hear
+            </h3>
+            <ul>
+                {/* map music hear */}
+            </ul>
+            <h3>
+                Books to Read
+            </h3>
+            <ul>
+                {/* map books here */}
+            </ul>
         </>
     )
 }
