@@ -7,7 +7,8 @@ export interface IUser {
     first_name: string,
     last_name: string,
     logins: number,
-    password: string
+    password: string,
+    movies: []
 }
 
 const useValue = () => {
