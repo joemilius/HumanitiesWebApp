@@ -16,6 +16,7 @@ function Home(){
             <h3>
                 Movies to Watch
             </h3>
+            <input />
             <ul>
                 {/* map movies here */}
                 {myMovies}
@@ -31,6 +32,10 @@ function Home(){
             </h3>
             <ul>
                 {/* map books here */}
+            </ul>
+            <h3>My Groups</h3>
+            <ul>
+                {/* map groups here */}
             </ul>
         </>
     )
