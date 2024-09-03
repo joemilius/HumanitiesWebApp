@@ -6,11 +6,13 @@ import Signup from "./pages/Signup";
 const routes = [
     {
         path: '/',
-        element: <App/>
-    },
-    {
-        path:'/login',
-        element: <Login/>
+        element: <App/>,
+        children: [
+            {
+                path: 'login',
+                element: <Login />
+            }
+        ]
     },
     {
         path:'/signup',
