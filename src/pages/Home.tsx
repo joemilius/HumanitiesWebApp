@@ -18,24 +18,38 @@ function Home(){
             </h3>
             <input />
             <ul>
-                {/* map movies here */}
+                {currentUser?.my_movies.map(movie => (
+                    <li>{movie['title']}</li>
+                ))}
                 {myMovies}
             </ul>
             <h3>
                 Music to Hear
             </h3>
             <ul>
-                {/* map music hear */}
+                {currentUser?.my_music.map(music => (
+                    <li>{music['album_name']}</li>
+                ))}
             </ul>
             <h3>
                 Books to Read
             </h3>
             <ul>
-                {/* map books here */}
+                {currentUser?.my_books.map(book => (
+                    <li>{book['title']}</li>
+                ))}
             </ul>
-            <h3>My Groups</h3>
+            <h3>My Memberships</h3>
             <ul>
-                {/* map groups here */}
+                {currentUser?.memberships.map(membership => (
+                    <li>{membership['group']['group_name']}</li>
+                ))}
+            </ul>
+            <h3>My Invitations</h3>
+            <ul>
+                {currentUser?.invitations.map(invitation => (
+                    <li>{invitation['group']['group_name']}</li>
+                ))}
             </ul>
         </>
     )
