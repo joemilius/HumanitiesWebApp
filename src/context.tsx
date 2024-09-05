@@ -8,7 +8,18 @@ export interface IUser {
     last_name: string,
     logins: number,
     password: string,
-    movies: []
+    memberships: [],
+    invitations: [],
+    groups: [],
+    movies: [],
+    music: [],
+    books:[],
+    my_movies:[],
+    my_music: [],
+    my_books: [],
+    movie_comments: [],
+    music_comments: [],
+    book_comments: []
 }
 
 const useValue = () => {
