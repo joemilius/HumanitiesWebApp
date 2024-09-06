@@ -39,18 +39,7 @@ function Home(){
                     <li>{book['title']}</li>
                 ))}
             </ul>
-            <h3>My Memberships</h3>
-            <ul>
-                {currentUser?.memberships.map(membership => (
-                    <li>{membership['group']['group_name']}</li>
-                ))}
-            </ul>
-            <h3>My Invitations</h3>
-            <ul>
-                {currentUser?.invitations.map(invitation => (
-                    <li>{invitation['group']['group_name']}</li>
-                ))}
-            </ul>
+            
         </>
     )
 }
