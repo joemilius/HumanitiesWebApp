@@ -22,13 +22,27 @@ export interface IUser {
     book_comments: []
 }
 
+export interface IGroup {
+    group_name: string,
+    memberships: [],
+    users: [],
+    invitations: [],
+    activities: [],
+    movies: [],
+    music: [],
+    books: []
+}
+
 const useValue = () => {
     const [currentUser, setCurrentUser] = useState<IUser>()
+    const [selectedGroup, setSelectedGroup] = useState<IGroup>()
     
 
     return{
         currentUser,
         setCurrentUser,
+        selectedGroup,
+        setSelectedGroup
     }
 }
 
