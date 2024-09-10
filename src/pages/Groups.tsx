@@ -1,11 +1,15 @@
 import React, {useContext} from 'react'
 import { IGroup, StateContext } from '../context'
+import { useNavigate } from 'react-router-dom'
 
 function Groups(){
     const {currentUser, setSelectedGroup} = useContext(StateContext)
 
+    const navigate = useNavigate()
+
     function handleGroupClick(group:IGroup){
         setSelectedGroup(group)
+        navigate(`/groups/${group.id}`)
     }
     return(
         <>
