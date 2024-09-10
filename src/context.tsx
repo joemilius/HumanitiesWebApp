@@ -23,6 +23,7 @@ export interface IUser {
 }
 
 export interface IGroup {
+    id: number,
     group_name: string,
     memberships: [],
     users: [],

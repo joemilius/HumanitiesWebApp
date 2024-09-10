@@ -1,6 +1,8 @@
 import App from "./App";
+import Groups from "./pages/Groups";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import OneGroup from "./pages/OneGroup";
 import Signup from "./pages/Signup";
 
 const routes = [
@@ -21,6 +23,14 @@ const routes = [
     {
         path:'/home',
         element: <Home />
+    },
+    {
+        path:'/groups',
+        element: <Groups />
+    },
+    {
+        path:'/groups/:id',
+        element: <OneGroup />
     }
 ]
 
