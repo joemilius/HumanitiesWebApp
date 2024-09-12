@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import OneGroup from "./pages/OneGroup";
 import Signup from "./pages/Signup";
+import Movies from "./pages/Movies"
 
 const routes = [
     {
@@ -31,6 +32,10 @@ const routes = [
     {
         path:'/groups/:id',
         element: <OneGroup />
+    },
+    {
+        path: '/groups/:id/movies',
+        element: <Movies />
     }
 ]
 
