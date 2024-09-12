@@ -34,6 +34,22 @@ export interface IGroup {
     books: []
 }
 
+export type MovieObject = {
+    id: number,
+    title: string
+    image: string,
+    year: number,
+    director: string,
+    cast: string,
+    description: string,
+    group: object,
+    movie_comments:[]
+}
+
+export interface MovieProps {
+    movie: MovieObject
+}
+
 const useValue = () => {
     const [currentUser, setCurrentUser] = useState<IUser>()
     const [selectedGroup, setSelectedGroup] = useState<IGroup>()
