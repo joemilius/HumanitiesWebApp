@@ -11,7 +11,8 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
             <h3>{movie['title']}</h3>
             <img src={movie['image']}/>
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
-            <ul>
+            {showComments ? (
+                <ul>
                 {movie.movie_comments.map(comment => {
                     return (
                         <li>
@@ -22,6 +23,8 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
                     )
                 })}
             </ul>
+            ) : null}
+            
         </div>
     )
 }

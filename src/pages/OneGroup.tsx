@@ -12,6 +12,10 @@ function OneGroup(){
         navigate(`groups/${selectedGroup?.id}/movies`)
     }
 
+    function handleMusicClick(){
+        navigate(`groups/${selectedGroup?.id}/mucis`)
+    }
+
     
     return(
         <>
@@ -22,6 +26,7 @@ function OneGroup(){
             })}
         </ul>
         <button onClick={handleMoviesClick}>View Movies</button>
+        <button onClick={handleMusicClick}>View Music</button>
         </>
     )
 }

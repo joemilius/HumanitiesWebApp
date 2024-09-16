@@ -36,6 +36,10 @@ const routes = [
     {
         path: '/groups/:id/movies',
         element: <Movies />
+    },
+    {
+        path: '/groups/:id/music',
+        element: <Movies />
     }
 ]
 
