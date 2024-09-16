@@ -50,6 +50,21 @@ export interface MovieProps {
     movie: MovieObject
 }
 
+export type MusicObject = {
+    id: number,
+    artist_name: string,
+    album_name: string,
+    image: string,
+    year: number,
+    description: string,
+    songs: [],
+    music_comments: []
+}
+
+export interface MusicProps {
+    album: MusicObject 
+}
+
 const useValue = () => {
     const [currentUser, setCurrentUser] = useState<IUser>()
     const [selectedGroup, setSelectedGroup] = useState<IGroup>()

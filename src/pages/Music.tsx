@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { StateContext, MusicObject } from '../context'
+import MusicCard from '../components/MusicCard'
 
 function Music(){
 
-    return (
+    const {selectedGroup} = useContext(StateContext)
+    return(
         <>
+            {selectedGroup?.music.map((album: MusicObject) => <MusicCard key={album['id']} album={album}/>)}
         </>
     )
 }
