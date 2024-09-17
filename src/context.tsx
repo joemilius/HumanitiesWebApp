@@ -65,6 +65,19 @@ export interface MusicProps {
     album: MusicObject 
 }
 
+export type BookObject = {
+    id: number,
+    title: string,
+    author: string,
+    image: string,
+    description: string,
+    book_comments: []
+}
+
+export interface BookProps {
+    book: BookObject
+}
+
 const useValue = () => {
     const [currentUser, setCurrentUser] = useState<IUser>()
     const [selectedGroup, setSelectedGroup] = useState<IGroup>()
