@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import OneGroup from "./pages/OneGroup";
 import Signup from "./pages/Signup";
 import Movies from "./pages/Movies"
+import Music from "./pages/Music";
+import Books from "./pages/Books";
 
 const routes = [
     {
@@ -39,7 +41,11 @@ const routes = [
     },
     {
         path: '/groups/:id/music',
-        element: <Movies />
+        element: <Music />
+    },
+    {
+        path: '/groups/:id/books',
+        element: <Books />
     }
 ]
 
