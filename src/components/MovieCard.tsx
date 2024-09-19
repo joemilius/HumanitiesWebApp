@@ -12,6 +12,11 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
             <img src={movie['image']}/>
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
+                <div>
+                    <form>
+                        <input type='text' placeholder='Enter Comment Here'/>
+                        <button type='submit'>Contribute</button>
+                    </form>
                 <ul>
                 {movie.movie_comments.map(comment => {
                     return (
@@ -23,6 +28,7 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
                     )
                 })}
             </ul>
+            </div>
             ) : null}
             
         </div>
