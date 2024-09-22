@@ -17,17 +17,17 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
                         <input type='text' placeholder='Enter Comment Here'/>
                         <button type='submit'>Contribute</button>
                     </form>
-                <ul>
-                {movie.movie_comments.map(comment => {
-                    return (
-                        <li>
-                            <p>{comment['stars']} Stars</p>
-                            <p>{comment['content']}</p>
-                            <p>{comment['user']['username']}</p>
-                        </li>
-                    )
-                })}
-            </ul>
+                    <ul>
+                    {movie.movie_comments.map(comment => {
+                        return (
+                            <li>
+                                <p>{comment['stars']} Stars</p>
+                                <p>{comment['content']}</p>
+                                <p>{comment['user']['username']}</p>
+                            </li>
+                        )
+                    })}
+                </ul>
             </div>
             ) : null}
             
