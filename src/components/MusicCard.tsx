@@ -1,10 +1,23 @@
 import React, {useState} from 'react'
 import { MusicProps } from '../context'
+// import { postRequest } from '../requests'
 
 const MusicCard: React.FC<MusicProps> = ({album}) : JSX.Element =>{
+    
     const [showComments, setShowComments] = useState(false)
+    const [newMusicComment, setNewMusicComment] = useState({
+        stars: '',
+        content: ''
+    })
 
     const handleShowComments = () => setShowComments(!showComments)
+    const handleChange = (e: React.SyntheticEvent<HTMLSelectElement>) => {
+        setNewMusicComment({...newMusicComment, [e.currentTarget.name]: e.currentTarget.value})
+    }
+
+    const handleSubmit = () => {
+        // postRequest
+    }
 
     return(
         <div>
@@ -14,7 +27,14 @@ const MusicCard: React.FC<MusicProps> = ({album}) : JSX.Element =>{
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
                 <div>
-                    <form>
+                    <form onSubmit={handleSubmit}>
+                        <label>How Many Stars?</label>
+                        <select onChange={handleChange}>
+                            <option value='4'>4</option>
+                            <option value='3'>3</option>
+                            <option value='2'>2</option>
+                            <option value='1'>1</option>
+                        </select>
                         <input type='text' placeholder='Enter Comment Here'/>
                         <button type='submit'>Contribute</button>
                     </form>

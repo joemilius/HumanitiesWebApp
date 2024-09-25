@@ -1,5 +1,6 @@
 import React, { createContext, PropsWithChildren, useState } from 'react'
 
+
 export interface IUser {
     id: number,
     username: string,
@@ -78,16 +79,48 @@ export interface BookProps {
     book: BookObject
 }
 
+export interface MovieComment {
+    stars: number,
+    content: string,
+    user_id: number,
+    movie_id: number
+}
+
+export interface MusicComment {
+    stars: number,
+    content: string,
+    user_id: number,
+    music_id: number
+}
+
+export interface BookComment {
+    stars: number,
+    content: string,
+    user_id: number,
+    book_id: number
+}
+
+
 const useValue = () => {
     const [currentUser, setCurrentUser] = useState<IUser>()
     const [selectedGroup, setSelectedGroup] = useState<IGroup>()
+    const [newMovieComment, setNewMovieComment] = useState<MovieComment>()
+    const [newMusicComment, setNewMusicComment] = useState<MovieComment>()
+    const [newBookComment, setNewBookComment] = useState<MovieComment>()
+
     
 
     return{
         currentUser,
         setCurrentUser,
         selectedGroup,
-        setSelectedGroup
+        setSelectedGroup,
+        newMovieComment,
+        setNewMovieComment,
+        newMusicComment,
+        setNewMusicComment,
+        newBookComment,
+        setNewBookComment
     }
 }
 
