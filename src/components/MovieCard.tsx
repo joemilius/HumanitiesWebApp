@@ -22,7 +22,7 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
             {showComments ? (
                 <div>
                     <form>
-                        <input type='text' placeholder='Enter Comment Here' onChange={handleChange}/>
+                        <input name='movie-content' type='text' placeholder='Enter Comment Here' onChange={handleChange}/>
                         <button type='submit'>Contribute</button>
                     </form>
                     <ul>

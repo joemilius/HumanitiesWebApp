@@ -35,7 +35,7 @@ const MusicCard: React.FC<MusicProps> = ({album}) : JSX.Element =>{
                             <option value='2'>2</option>
                             <option value='1'>1</option>
                         </select>
-                        <input type='text' placeholder='Enter Comment Here'/>
+                        <input name='music-content' type='text' placeholder='Enter Comment Here'/>
                         <button type='submit'>Contribute</button>
                     </form>
                     <ul>

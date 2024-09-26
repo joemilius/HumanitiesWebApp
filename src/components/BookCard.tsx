@@ -5,8 +5,16 @@ import { BookProps } from '../context'
 const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
 
     const [showComments, setShowComments] = useState(false)
+    const [newBookComment, setNewBookComment] = useState({
+        stars: '',
+        content: ''
+    })
 
     const handleShowComments = () => setShowComments(!showComments)
+
+    const handleChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
+        setNewBookComment({...newBookComment, [e.currentTarget.name]: e.currentTarget.value})
+    }
 
     return(
         <div>
@@ -17,7 +25,7 @@ const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
             {showComments ? (
                 <div>
                     <form>
-                        <input type='text' placeholder='Enter Comment Here'/>
+                        <input name='book-content' type='text' placeholder='Enter Comment Here' onChange={handleChange}/>
                         <button type='submit'>Contribute</button>
                     </form>
                     <ul>
