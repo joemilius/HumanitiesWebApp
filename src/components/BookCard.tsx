@@ -1,20 +1,15 @@
-import React, {useState} from 'react'
-import { BookProps } from '../context'
+import React, {useState, useContext} from 'react'
+import { BookProps, StateContext } from '../context'
+
 
 
 const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
 
     const [showComments, setShowComments] = useState(false)
-    const [newBookComment, setNewBookComment] = useState({
-        stars: '',
-        content: ''
-    })
+    const {handleCommentContentChange} = useContext(StateContext)
 
     const handleShowComments = () => setShowComments(!showComments)
 
-    const handleChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
-        setNewBookComment({...newBookComment, [e.currentTarget.name]: e.currentTarget.value})
-    }
 
     return(
         <div>
@@ -25,7 +20,7 @@ const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
             {showComments ? (
                 <div>
                     <form>
-                        <input name='book-content' type='text' placeholder='Enter Comment Here' onChange={handleChange}/>
+                        <input className='book-content' name='content' type='text' placeholder='Enter Comment Here' onChange={(e: React.SyntheticEvent<HTMLInputElement>) => handleCommentContentChange(e)}/>
                         <button type='submit'>Contribute</button>
                     </form>
                     <ul>

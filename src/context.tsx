@@ -79,34 +79,23 @@ export interface BookProps {
     book: BookObject
 }
 
-export interface MovieComment {
-    stars: number,
-    content: string,
-    user_id: number,
-    movie_id: number
-}
 
-export interface MusicComment {
-    stars: number,
-    content: string,
-    user_id: number,
-    music_id: number
-}
 
-export interface BookComment {
-    stars: number,
-    content: string,
-    user_id: number,
-    book_id: number
-}
+
 
 
 const useValue = () => {
     const [currentUser, setCurrentUser] = useState<IUser>()
     const [selectedGroup, setSelectedGroup] = useState<IGroup>()
-    const [newMovieComment, setNewMovieComment] = useState<MovieComment>()
-    const [newMusicComment, setNewMusicComment] = useState<MovieComment>()
-    const [newBookComment, setNewBookComment] = useState<MovieComment>()
+    const [newComment, setNewComment] = useState({
+        stars: '',
+        content: ''
+    })
+
+
+const handleCommentContentChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    setNewComment({...newComment, [e.currentTarget.name]: e.currentTarget.value})
+}
 
     
 
@@ -115,12 +104,9 @@ const useValue = () => {
         setCurrentUser,
         selectedGroup,
         setSelectedGroup,
-        newMovieComment,
-        setNewMovieComment,
-        newMusicComment,
-        setNewMusicComment,
-        newBookComment,
-        setNewBookComment
+        newComment,
+        setNewComment,
+        handleCommentContentChange
     }
 }
 
