@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
-import { MusicProps } from '../context'
+import React, {useState, useContext} from 'react'
+import { MusicProps, StateContext } from '../context'
 // import { postRequest } from '../requests'
 
 const MusicCard: React.FC<MusicProps> = ({album}) : JSX.Element =>{
     
     const [showComments, setShowComments] = useState(false)
+    const {handleCommentContentChange} = useContext(StateContext)
     const [newMusicComment, setNewMusicComment] = useState({
         stars: '',
         content: ''
@@ -35,7 +36,7 @@ const MusicCard: React.FC<MusicProps> = ({album}) : JSX.Element =>{
                             <option value='2'>2</option>
                             <option value='1'>1</option>
                         </select>
-                        <input name='music-content' type='text' placeholder='Enter Comment Here'/>
+                        <input name='content' type='text' placeholder='Enter Comment Here' onChange={(e:React.SyntheticEvent<HTMLInputElement>) => handleCommentContentChange(e)}/>
                         <button type='submit'>Contribute</button>
                     </form>
                     <ul>
