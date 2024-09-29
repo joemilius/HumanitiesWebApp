@@ -1,4 +1,5 @@
 import React, { createContext, PropsWithChildren, useState } from 'react'
+// import { postRequest } from './requests'
 
 
 export interface IUser {
@@ -94,7 +95,40 @@ const useValue = () => {
 
 
 const handleCommentContentChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    setNewComment({...newComment, [e.currentTarget.name]: e.currentTarget.value})
+    setNewComment({...newComment, "content": e.currentTarget.value})
+}
+
+const handleCommentStarChange = (e:React.SyntheticEvent<HTMLSelectElement>) => {
+    setNewComment({...newComment, "stars": e.currentTarget.value})
+}
+
+const handleCommentSubmit = (media:string, mediaId: number, userId: number) => {
+    let postComment = {}
+    if(media === 'movies'){
+        postComment = {
+            stars: newComment.stars,
+            content: newComment.content,
+            movie_id: mediaId,
+            user_id: userId
+        }
+    }else if (media === 'music'){
+        postComment = {
+            stars: newComment.stars,
+            content: newComment.content,
+            music_id: mediaId,
+            user_id: userId
+        }
+    }else if(media === 'books'){
+        postComment = {
+            stars: newComment.stars,
+            content: newComment.content,
+            book_id: mediaId,
+            user_id: userId
+        }
+    }
+
+    console.log(postComment)
+    
 }
 
     
@@ -106,7 +140,9 @@ const handleCommentContentChange = (e: React.SyntheticEvent<HTMLInputElement>) =
         setSelectedGroup,
         newComment,
         setNewComment,
-        handleCommentContentChange
+        handleCommentContentChange,
+        handleCommentStarChange,
+        handleCommentSubmit
     }
 }
 
