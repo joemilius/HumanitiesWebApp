@@ -5,20 +5,13 @@ import { MusicProps, StateContext } from '../context'
 const MusicCard: React.FC<MusicProps> = ({album}) : JSX.Element =>{
     
     const [showComments, setShowComments] = useState(false)
-    const {handleCommentContentChange} = useContext(StateContext)
-    const [newMusicComment, setNewMusicComment] = useState({
-        stars: '',
-        content: ''
-    })
+    const {currentUser, handleCommentContentChange, handleCommentStarChange, handleCommentSubmit} = useContext(StateContext)
 
     const handleShowComments = () => setShowComments(!showComments)
-    const handleChange = (e: React.SyntheticEvent<HTMLSelectElement>) => {
-        setNewMusicComment({...newMusicComment, [e.currentTarget.name]: e.currentTarget.value})
-    }
 
-    const handleSubmit = () => {
-        // postRequest
-    }
+    const userId = currentUser ? currentUser.id : 0
+    
+    
 
     return(
         <div>
@@ -28,9 +21,9 @@ const MusicCard: React.FC<MusicProps> = ({album}) : JSX.Element =>{
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
                 <div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={() => handleCommentSubmit('music', album.id, userId)}>
                         <label>How Many Stars?</label>
-                        <select onChange={handleChange}>
+                        <select onChange={(e:React.SyntheticEvent<HTMLSelectElement>) => handleCommentStarChange(e)}>
                             <option value='4'>4</option>
                             <option value='3'>3</option>
                             <option value='2'>2</option>
