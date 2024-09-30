@@ -3,7 +3,7 @@ import { MovieProps, StateContext } from '../context'
 
 const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
     const [showComments, setShowComments] = useState(false)
-    const {handleCommentContentChange} = useContext(StateContext)
+    const {handleCommentContentChange, handleCommentStarChange} = useContext(StateContext)
 
     const handleShowComments = () => setShowComments(!showComments)
 
@@ -15,6 +15,13 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
             {showComments ? (
                 <div>
                     <form>
+                    <label>How Many Stars?</label>
+                        <select onChange={(e:React.SyntheticEvent<HTMLSelectElement>) => handleCommentStarChange(e)}>
+                            <option value='4'>4</option>
+                            <option value='3'>3</option>
+                            <option value='2'>2</option>
+                            <option value='1'>1</option>
+                        </select>
                         <input name='content' type='text' placeholder='Enter Comment Here' onChange={(e: React.SyntheticEvent<HTMLInputElement>) => handleCommentContentChange(e)}/>
                         <button type='submit'>Contribute</button>
                     </form>
