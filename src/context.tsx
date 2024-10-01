@@ -1,5 +1,5 @@
 import React, { createContext, PropsWithChildren, useState } from 'react'
-// import { postRequest } from './requests'
+import { postRequest } from './requests'
 
 
 export interface IUser {
@@ -127,7 +127,7 @@ const handleCommentSubmit = (media:string, mediaId: number, userId: number) => {
         }
     }
 
-    console.log(postComment)
+    postRequest(`/api/${media}`, postComment)
     
 }
 
