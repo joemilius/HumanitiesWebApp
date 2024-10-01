@@ -6,9 +6,11 @@ import { BookProps, StateContext } from '../context'
 const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
 
     const [showComments, setShowComments] = useState(false)
-    const {handleCommentContentChange, handleCommentStarChange} = useContext(StateContext)
+    const {currentUser, handleCommentContentChange, handleCommentStarChange, handleCommentSubmit} = useContext(StateContext)
 
     const handleShowComments = () => setShowComments(!showComments)
+
+    const userId = currentUser ? currentUser.id : 0
 
 
     return(
@@ -19,7 +21,7 @@ const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
                 <div>
-                    <form>
+                    <form onSubmit={() => handleCommentSubmit('books', book.id, userId)}>
                     <label>How Many Stars?</label>
                         <select onChange={(e:React.SyntheticEvent<HTMLSelectElement>) => handleCommentStarChange(e)}>
                             <option value='4'>4</option>
