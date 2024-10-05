@@ -16,7 +16,7 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
                 <div>
-                    <form onSubmit={() => handleCommentSubmit('movies', movie.id, userId)}>
+                    <form onSubmit={() => handleCommentSubmit('movie', movie.id, userId)}>
                     <label>How Many Stars?</label>
                         <select onChange={(e:React.SyntheticEvent<HTMLSelectElement>) => handleCommentStarChange(e)}>
                             <option value='4'>4</option>

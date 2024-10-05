@@ -103,29 +103,15 @@ const handleCommentStarChange = (e:React.SyntheticEvent<HTMLSelectElement>) => {
 }
 
 const handleCommentSubmit = (media:string, mediaId: number, userId: number) => {
-    let postComment = {}
-    if(media === 'movies'){
-        postComment = {
-            stars: newComment.stars,
-            content: newComment.content,
-            movie_id: mediaId,
-            user_id: userId
-        }
-    }else if (media === 'music'){
-        postComment = {
-            stars: newComment.stars,
-            content: newComment.content,
-            music_id: mediaId,
-            user_id: userId
-        }
-    }else if(media === 'books'){
-        postComment = {
-            stars: newComment.stars,
-            content: newComment.content,
-            book_id: mediaId,
-            user_id: userId
-        }
+    // media is a string of 'music', 'movie', or 'book' to be used in the url for the appropriate route in the api
+    // in the route for the coment creation media_id in the postComment data sent to the api is converted to 'movie_id', 'music_id', or 'book_id'
+    const postComment = {
+        stars: newComment.stars,
+        content: newComment.content,
+        media_id: mediaId,
+        user_id: userId
     }
+    
 
     postRequest(`/api/${media}`, postComment)
     

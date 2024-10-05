@@ -21,7 +21,7 @@ const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
                 <div>
-                    <form onSubmit={() => handleCommentSubmit('books', book.id, userId)}>
+                    <form onSubmit={() => handleCommentSubmit('book', book.id, userId)}>
                     <label>How Many Stars?</label>
                         <select onChange={(e:React.SyntheticEvent<HTMLSelectElement>) => handleCommentStarChange(e)}>
                             <option value='4'>4</option>
