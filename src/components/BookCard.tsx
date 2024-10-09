@@ -6,7 +6,7 @@ import { BookProps, StateContext } from '../context'
 const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
 
     const [showComments, setShowComments] = useState(false)
-    const {currentUser, handleCommentContentChange, handleCommentStarChange, handleCommentSubmit} = useContext(StateContext)
+    const {currentUser, handleCommentContentChange, handleCommentStarChange, handleCommentSubmit, handleAddMyMedia} = useContext(StateContext)
 
     const handleShowComments = () => setShowComments(!showComments)
 
@@ -18,6 +18,7 @@ const BookCard: React.FC<BookProps> = ({book}) : JSX.Element => {
             <h3>{book.title}</h3>
             <h4>{book.author}</h4>
             <img src={book.image} alt={book.title}/>
+            <button onClick={() => {handleAddMyMedia('books', book)}}>Add Book to Read List</button>
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
                 <div>

@@ -111,10 +111,13 @@ const handleCommentSubmit = (media:string, mediaId: number, userId: number) => {
         media_id: mediaId,
         user_id: userId
     }
-    
 
     postRequest(`/api/${media}`, postComment)
     
+}
+
+const handleAddMyMedia = (media:string, body: object) => {
+    postRequest(`/api/my${media}`, body)
 }
 
     
@@ -128,7 +131,8 @@ const handleCommentSubmit = (media:string, mediaId: number, userId: number) => {
         setNewComment,
         handleCommentContentChange,
         handleCommentStarChange,
-        handleCommentSubmit
+        handleCommentSubmit,
+        handleAddMyMedia
     }
 }
 
