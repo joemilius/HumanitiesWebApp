@@ -3,7 +3,7 @@ import { MovieProps, StateContext } from '../context'
 
 const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
     const [showComments, setShowComments] = useState(false)
-    const {currentUser, handleCommentContentChange, handleCommentStarChange, handleCommentSubmit} = useContext(StateContext)
+    const {currentUser, handleCommentContentChange, handleCommentStarChange, handleCommentSubmit, handleAddMyMedia} = useContext(StateContext)
 
     const handleShowComments = () => setShowComments(!showComments)
 
@@ -13,6 +13,7 @@ const MovieCard: React.FC<MovieProps> = ({movie}) : JSX.Element => {
         <div>
             <h3>{movie['title']}</h3>
             <img src={movie['image']}/>
+            <button onClick={() => {handleAddMyMedia('movies', movie)}}>Add Movies to Watch List</button>
             <button onClick={handleShowComments}>{showComments ? 'Hide Comments' : 'View Comments'}</button>
             {showComments ? (
                 <div>
