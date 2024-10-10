@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { StateContext } from '../context'
 import NavBar from '../components/NavBar'
 
@@ -6,7 +7,13 @@ import NavBar from '../components/NavBar'
 function Home(){
   const {currentUser} = useContext(StateContext)
 
+  const navigate = useNavigate()
+
     const myMovies = currentUser?.movies
+
+    const handleSearchClick = () => {
+        navigate()
+    }
 
     return(
         <>
@@ -16,6 +23,7 @@ function Home(){
             <h3>
                 Movies to Watch
             </h3>
+            <button onClick={handleSearchClick}>Search Movies</button>
             <input />
             <ul>
                 {currentUser?.my_movies.map(movie => (
@@ -26,6 +34,7 @@ function Home(){
             <h3>
                 Music to Hear
             </h3>
+            <button onClick={handleSearchClick}>Search Music</button>
             <ul>
                 {currentUser?.my_music.map(music => (
                     <li>{music['album_name']}</li>
@@ -34,6 +43,7 @@ function Home(){
             <h3>
                 Books to Read
             </h3>
+            <button onClick={handleSearchClick}>Search Books</button>
             <ul>
                 {currentUser?.my_books.map(book => (
                     <li>{book['title']}</li>
