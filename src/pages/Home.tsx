@@ -11,8 +11,8 @@ function Home(){
 
     const myMovies = currentUser?.movies
 
-    const handleSearchClick = () => {
-        navigate()
+    const handleSearchClick = (media:string) => {
+        navigate(`/search-${media}`)
     }
 
     return(
@@ -23,7 +23,7 @@ function Home(){
             <h3>
                 Movies to Watch
             </h3>
-            <button onClick={handleSearchClick}>Search Movies</button>
+            <button onClick={() => handleSearchClick('movies')}>Search Movies</button>
             <input />
             <ul>
                 {currentUser?.my_movies.map(movie => (
@@ -34,7 +34,7 @@ function Home(){
             <h3>
                 Music to Hear
             </h3>
-            <button onClick={handleSearchClick}>Search Music</button>
+            <button onClick={() => handleSearchClick('music')}>Search Music</button>
             <ul>
                 {currentUser?.my_music.map(music => (
                     <li>{music['album_name']}</li>
@@ -43,7 +43,7 @@ function Home(){
             <h3>
                 Books to Read
             </h3>
-            <button onClick={handleSearchClick}>Search Books</button>
+            <button onClick={() => handleSearchClick('books')}>Search Books</button>
             <ul>
                 {currentUser?.my_books.map(book => (
                     <li>{book['title']}</li>
