@@ -85,12 +85,20 @@ export interface BookProps {
 
 
 
+
+
 const useValue = () => {
     const [currentUser, setCurrentUser] = useState<IUser>()
     const [selectedGroup, setSelectedGroup] = useState<IGroup>()
     const [newComment, setNewComment] = useState({
         stars: '',
         content: ''
+    })
+
+    const [mediaSearch, setMediaSearch] = useState({
+        'movie-search': '',
+        'music-search': '',
+        'book-search': '' 
     })
 
 
@@ -120,6 +128,11 @@ const handleAddMyMedia = (media:string, body: object) => {
     postRequest(`/api/my${media}`, body)
 }
 
+const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    setMediaSearch({...mediaSearch, [e.currentTarget.name]: e.currentTarget.value})
+
+}
+
     
 
     return{
@@ -132,7 +145,8 @@ const handleAddMyMedia = (media:string, body: object) => {
         handleCommentContentChange,
         handleCommentStarChange,
         handleCommentSubmit,
-        handleAddMyMedia
+        handleAddMyMedia,
+        handleMediaSearch
     }
 }
 

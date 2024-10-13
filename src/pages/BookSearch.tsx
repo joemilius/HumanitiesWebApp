@@ -3,7 +3,7 @@ import React from 'react'
 function BookSearch(){
     return(
         <div>
-            <input/>
+            <input type='text' />
             <button type='submit'>Search Movies</button>
         </div>
     )

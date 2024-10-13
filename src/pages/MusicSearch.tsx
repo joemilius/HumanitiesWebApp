@@ -4,7 +4,7 @@ function MusicSearch(){
     return(
         <div>  
             <form>
-                <input/>
+                <input type='text' placeholder=''/>
                 <button type='submit'>Search Movies</button>
             </form>
         </div>
