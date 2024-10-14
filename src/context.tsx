@@ -142,6 +142,8 @@ const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>) => {
         setSelectedGroup,
         newComment,
         setNewComment,
+        mediaSearch,
+        setMediaSearch,
         handleCommentContentChange,
         handleCommentStarChange,
         handleCommentSubmit,
