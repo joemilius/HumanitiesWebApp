@@ -7,7 +7,7 @@ function MusicSearch(){
         <div>  
             <form>
             <input type='text' name='music-search' value={mediaSearch['music-search']} onChange={handleMediaSearch}/>
-                <button type='submit'>Search Movies</button>
+                <button type='submit'>Search Music</button>
             </form>
         </div>
     )
