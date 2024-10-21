@@ -133,6 +133,39 @@ const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>) => {
 
 }
 
+const handleMediaSearchSubmit = (media: string) => {
+
+    if (media === 'movies'){
+        const newMovie = {
+            title: '',
+            image: '',
+            year: '',
+            director: '',
+            cast: '',
+            description: ''
+        }
+        console.log(newMovie)
+    }else if (media === 'music'){
+        const newMusic = {
+            artist_name: '',
+            album_name: '',
+            image: '',
+            year: '',
+            description: ''
+        }
+        console.log(newMusic)
+    }else if(media === 'books'){
+        const newBook = {
+            title: '',
+            author: '',
+            image: '',
+            description: ''
+        }
+        console.log(newBook)
+    }
+
+}
+
     
 
     return{
@@ -148,7 +181,8 @@ const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>) => {
         handleCommentStarChange,
         handleCommentSubmit,
         handleAddMyMedia,
-        handleMediaSearch
+        handleMediaSearch,
+        handleMediaSearchSubmit
     }
 }
 

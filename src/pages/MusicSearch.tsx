@@ -2,10 +2,10 @@ import React, {useContext} from 'react'
 import { StateContext } from '../context'
 
 function MusicSearch(){
-    const {mediaSearch, handleMediaSearch} = useContext(StateContext)
+    const {mediaSearch, handleMediaSearch, handleMediaSearchSubmit} = useContext(StateContext)
     return(
         <div>  
-            <form>
+            <form onSubmit={() => handleMediaSearchSubmit('music')}>
             <input type='text' name='music-search' value={mediaSearch['music-search']} onChange={handleMediaSearch}/>
                 <button type='submit'>Search Music</button>
             </form>
