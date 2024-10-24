@@ -2,6 +2,7 @@ import React, { createContext, PropsWithChildren, useState } from 'react'
 import { postRequest } from './requests'
 
 
+
 export interface IUser {
     id: number,
     username: string,
@@ -144,6 +145,10 @@ const handleMediaSearchSubmit = (media: string) => {
             cast: '',
             description: ''
         }
+        const movieAPI = import.meta.env.VITE_APP_TMDB_API_KEY
+        fetch(`https://api.themoviedb.org/3/search/movie?query=${mediaSearch['movie-search']}&api_key=${movieAPI}`)
+        .then(resp => resp.json())
+        .then(data => console.log(data))
         console.log(newMovie)
     }else if (media === 'music'){
         const newMusic = {
