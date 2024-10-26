@@ -166,6 +166,10 @@ const handleMediaSearchSubmit = (media: string) => {
             image: '',
             description: ''
         }
+        const bookAPI = import.meta.env.VITE_APP_GOOGLE_BOOKS_API_KEY
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${mediaSearch}&key=${bookAPI}`)
+        .then(resp => resp.json())
+        .then(data => console.log(data))
         console.log(newBook)
     }
 
