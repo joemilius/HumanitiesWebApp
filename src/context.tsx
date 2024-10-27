@@ -148,7 +148,13 @@ const handleMediaSearchSubmit = (media: string) => {
         const movieAPI = import.meta.env.VITE_APP_TMDB_API_KEY
         fetch(`https://api.themoviedb.org/3/search/movie?query=${mediaSearch['movie-search']}&api_key=${movieAPI}`)
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            newMovie.title = data.title 
+            newMovie.description = data.overview 
+            newMovie.year = data.release_date 
+            newMovie.image = data.poster_path 
+        })
         console.log(newMovie)
     }else if (media === 'music'){
         const newMusic = {
