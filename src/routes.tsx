@@ -7,9 +7,7 @@ import Signup from "./pages/Signup";
 import Movies from "./pages/Movies"
 import Music from "./pages/Music";
 import Books from "./pages/Books";
-import MovieSearch from "./pages/MovieSearch";
-import MusicSearch from "./pages/MusicSearch";
-import BookSearch from "./pages/BookSearch";
+import MediaSearch from "./pages/MediaSearch";
 
 const routes = [
     {
@@ -51,16 +49,8 @@ const routes = [
         element: <Books />
     },
     {
-        path: '/search-movies',
-        element: <MovieSearch />
-    },
-    {
-        path: '/search-music',
-        element: <MusicSearch />
-    },
-    {
-        path: '/search-books',
-        element: <BookSearch />
+        path: '/search-media',
+        element: <MediaSearch />
     }
 ]
 

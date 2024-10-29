@@ -129,8 +129,8 @@ const handleAddMyMedia = (media:string, body: object) => {
     postRequest(`/api/my${media}`, body)
 }
 
-const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    setMediaSearch({...mediaSearch, [e.currentTarget.name]: e.currentTarget.value})
+const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>, media:string) => {
+    setMediaSearch({...mediaSearch, [media]: e.currentTarget.value})
 
 }
 
