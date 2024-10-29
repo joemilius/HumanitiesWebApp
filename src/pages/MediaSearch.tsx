@@ -6,7 +6,7 @@ function MediaSearch(){
     return(
         <div>  
             <form onSubmit={() => handleMediaSearchSubmit('music')}>
-            <input type='text' name='music-search' value={mediaSearch['music-search']} onChange={handleMediaSearch}/>
+            <input type='text' value={mediaSearch['music-search']} onChange={handleMediaSearch}/>
                 <button type='submit'>Search Music</button>
             </form>
             <select>
