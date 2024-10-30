@@ -95,7 +95,7 @@ const useValue = () => {
         stars: '',
         content: ''
     })
-
+    const [mediaSearchType, setMediaSearchType] = useState('movie')
     const [mediaSearch, setMediaSearch] = useState({
         'movie-search': '',
         'music-search': '',
@@ -129,14 +129,18 @@ const handleAddMyMedia = (media:string, body: object) => {
     postRequest(`/api/my${media}`, body)
 }
 
-const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>, media:string) => {
-    setMediaSearch({...mediaSearch, [media]: e.currentTarget.value})
+const handleMediaSearch = (e: React.SyntheticEvent<HTMLInputElement>, ) => {
+    setMediaSearch({...mediaSearch, [`${mediaSearchType}-search`]: e.currentTarget.value})
 
 }
 
-const handleMediaSearchSubmit = (media: string) => {
+const handleMediaSearchType = (e: React.SyntheticEvent<HTMLSelectElement>) => {
+    setMediaSearchType(e.currentTarget.value)
+}
 
-    if (media === 'movies'){
+const handleMediaSearchSubmit = () => {
+
+    if (mediaSearchType === 'movie'){
         const newMovie = {
             title: '',
             image: '',
@@ -156,7 +160,7 @@ const handleMediaSearchSubmit = (media: string) => {
             newMovie.image = data.poster_path 
         })
         console.log(newMovie)
-    }else if (media === 'music'){
+    }else if (mediaSearchType === 'music'){
         const newMusic = {
             artist_name: '',
             album_name: '',
@@ -165,7 +169,7 @@ const handleMediaSearchSubmit = (media: string) => {
             description: ''
         }
         console.log(newMusic)
-    }else if(media === 'books'){
+    }else if(mediaSearchType === 'book'){
         const newBook = {
             title: '',
             author: '',
@@ -192,11 +196,13 @@ const handleMediaSearchSubmit = (media: string) => {
         setNewComment,
         mediaSearch,
         setMediaSearch,
+        mediaSearchType,
         handleCommentContentChange,
         handleCommentStarChange,
         handleCommentSubmit,
         handleAddMyMedia,
         handleMediaSearch,
+        handleMediaSearchType,
         handleMediaSearchSubmit
     }
 }
