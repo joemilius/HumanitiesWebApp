@@ -2,17 +2,18 @@ import React, {useContext} from 'react'
 import { StateContext } from '../context'
 
 function MediaSearch(){
-    const {mediaSearch, handleMediaSearch, handleMediaSearchSubmit} = useContext(StateContext)
+    const {mediaSearch, mediaSearchType, handleMediaSearch, handleMediaSearchType, handleMediaSearchSubmit} = useContext(StateContext)
+    const mediaKey = mediaSearchType === 'movie' ? 'movie-search': mediaSearchType === 'music' ? 'music-search' : 'book-search'
     return(
         <div>  
-            <form onSubmit={() => handleMediaSearchSubmit('music')}>
-            <input type='text' value={mediaSearch['music-search']} onChange={handleMediaSearch}/>
+            <form onSubmit={() => handleMediaSearchSubmit()}>
+            <input type='text' value={mediaSearch[mediaKey]} onChange={handleMediaSearch}/>
                 <button type='submit'>Search Music</button>
             </form>
-            <select>
-                <option>Movies</option>
-                <option>Music</option>
-                <option>Books</option>
+            <select onChange={handleMediaSearchType}>
+                <option value='movie'>Movies</option>
+                <option value='music'>Music</option>
+                <option value='book'>Books</option>
             </select>
         </div>
     )
