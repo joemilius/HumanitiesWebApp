@@ -8,6 +8,7 @@ import Movies from "./pages/Movies"
 import Music from "./pages/Music";
 import Books from "./pages/Books";
 import MediaSearch from "./pages/MediaSearch";
+import Activities from "./pages/Activities";
 
 const routes = [
     {
@@ -51,6 +52,10 @@ const routes = [
     {
         path: '/search-media',
         element: <MediaSearch />
+    },
+    {
+        path: '/activities',
+        element: <Activities />
     }
 ]
 
